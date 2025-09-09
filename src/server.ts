@@ -4,6 +4,7 @@
  * QBCore Extended TypeScript wrapper for server scripts.
  */
 import type { Shared, Job, ServerFunctions, CommandHandler } from './types';
+export { getSequelize, createSequelize } from './database';
 
 export type PlayerLoadedHandler = (player: any) => void;
 export type PlayerUnloadHandler = (playerId: number) => void;
