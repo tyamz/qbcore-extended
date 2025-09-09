@@ -1,0 +1,33 @@
+{
+  "name": "qbcore-extended",
+  "version": "0.1.0",
+  "description": "TypeScript utilities for QBCore",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./client": {
+      "require": "./dist/client.js",
+      "types": "./dist/client.d.ts"
+    },
+    "./server": {
+      "require": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build"
+  },
+  "keywords": ["qbcore", "fivem", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.19032-1",
+    "@citizenfx/server": "^2.0.19032-1",
+    "typescript": "^5.3.3"
+  }
+}
