@@ -53,6 +53,34 @@ QBCore.Server.onPlayerUnload = () => {};
 The `core` property exposes the original QBCore object if you need to call
 additional functions.
 
+### Shared utilities and jobs
+
+Both client and server wrappers expose QBCore's shared helpers and job
+configuration:
+
+```typescript
+// Random plate using QBCore's helper
+const plate = QBCore.shared.RandomStr(4);
+
+// Access job definitions
+const police = QBCore.jobs['police'];
+```
+
+### Server helpers
+
+The server wrapper includes shortcuts for common QBCore functions and command
+registration:
+
+```typescript
+// Fetch a player by source
+const player = QBCore.getPlayer(source);
+
+// Register a simple command
+QBCore.registerCommand('ping', 'Replies with pong', (src) => {
+  console.log(`${src} pinged`);
+});
+```
+
 ### Server native thread affinity
 
 CitizenFX's JavaScript runtime requires certain server natives to run on the

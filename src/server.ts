@@ -3,17 +3,26 @@
 /**
  * QBCore Extended TypeScript wrapper for server scripts.
  */
+import type { Shared, Job, ServerFunctions, CommandHandler } from './types';
+
 export type PlayerLoadedHandler = (player: any) => void;
 export type PlayerUnloadHandler = (playerId: number) => void;
 
 export class QBCoreServer {
   public core: any;
+  public shared: Shared;
+  public jobs: Record<string, Job>;
+  public functions: ServerFunctions;
   private _onPlayerLoaded?: PlayerLoadedHandler;
   private _onPlayerUnload?: PlayerUnloadHandler;
 
   constructor() {
     // Retrieve the QBCore object from the qb-core resource exports
     this.core = (globalThis as any).exports['qb-core'].GetCoreObject();
+    this.shared = this.core.Shared as Shared;
+    this.jobs = this.shared.Jobs;
+    this.functions = this.core.Functions as ServerFunctions;
+
     on('QBCore:Server:PlayerLoaded', (player: any) => {
       this._onPlayerLoaded?.(player);
     });
@@ -36,6 +45,28 @@ export class QBCoreServer {
 
   set onPlayerUnload(handler: PlayerUnloadHandler | undefined) {
     this._onPlayerUnload = handler;
+  }
+
+  getPlayer(source: number): any {
+    return this.functions.GetPlayer(source);
+  }
+
+  getPlayers(): number[] {
+    return this.functions.GetPlayers();
+  }
+
+  getJob(name: string): Job | undefined {
+    return this.jobs[name];
+  }
+
+  registerCommand(
+    name: string,
+    help: string,
+    handler: CommandHandler,
+    opts: { args?: string[]; argsRequired?: boolean; restricted?: boolean } = {},
+  ): void {
+    const { args = [], argsRequired = false, restricted = false } = opts;
+    this.core.Commands.Add(name, help, args, argsRequired, handler, restricted);
   }
 }
 
