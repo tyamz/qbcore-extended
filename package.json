@@ -22,12 +22,21 @@
     "build": "tsc",
     "test": "npm run build"
   },
-  "keywords": ["qbcore", "fivem", "typescript"],
+  "keywords": [
+    "qbcore",
+    "fivem",
+    "typescript"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@citizenfx/client": "^2.0.19032-1",
     "@citizenfx/server": "^2.0.19032-1",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "mysql2": "^3.14.5",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6"
   }
 }

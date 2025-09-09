@@ -81,6 +81,17 @@ QBCore.registerCommand('ping', 'Replies with pong', (src) => {
 });
 ```
 
+### Database
+
+The library can also initialize a [sequelize-typescript](https://github.com/sequelize/sequelize-typescript) instance using the `mysql_connection_string` defined in `server.cfg`:
+
+```typescript
+import { getSequelize } from 'qbcore-extended/server';
+
+const sequelize = getSequelize();
+// use sequelize to define models or run queries
+```
+
 ### Server native thread affinity
 
 CitizenFX's JavaScript runtime requires certain server natives to run on the
@@ -98,7 +109,10 @@ const giveWeapon = runOnMainThread(GiveWeaponToPed);
 giveWeapon(playerPed, weaponHash, 250, false, false);
 ```
 
-## Example resource
+## Example resources
 
 A minimal resource demonstrating basic usage is available in
 [`examples/sample-resource`](examples/sample-resource).
+
+An example showing how to log player events with Sequelize is available in
+[`examples/sequelize-resource`](examples/sequelize-resource).

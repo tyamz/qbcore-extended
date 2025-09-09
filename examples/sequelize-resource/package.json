@@ -1,0 +1,16 @@
+{
+  "name": "qbcore-extended-sequelize",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "qbcore-extended": "^0.1.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize-typescript": "^2.1.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
