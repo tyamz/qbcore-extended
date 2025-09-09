@@ -97,3 +97,8 @@ Natives.SetPlayerRoutingBucket(playerId, 0);
 const giveWeapon = runOnMainThread(GiveWeaponToPed);
 giveWeapon(playerPed, weaponHash, 250, false, false);
 ```
+
+## Example resource
+
+A minimal resource demonstrating basic usage is available in
+[`examples/sample-resource`](examples/sample-resource).
